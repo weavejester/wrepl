@@ -9,6 +9,17 @@
     <script>
       var editor = null
 
+      var isBalanced = function(text) {
+        var brackets = text.replace(/[^\{\}\[\]\(\)]/g, '')
+        var prevBrackets = null
+        while (brackets != prevBrackets) {
+          console.log(brackets)
+          prevBrackets = brackets
+          brackets = brackets.replace(/\(\)|\[\]|\{\}/, '')
+        }
+        return (brackets == "")
+      }
+
       var fixHeight = function(editor) {
         var prevLineCount = null
         var container = $('#editor')
